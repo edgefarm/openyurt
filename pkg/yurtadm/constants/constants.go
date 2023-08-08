@@ -220,7 +220,7 @@ spec:
     imagePullPolicy: IfNotPresent
     volumeMounts:
     - name: hub-dir
-      mountPath: /data/yurthub
+      mountPath: /var/lib/yurthub
     - name: kubernetes
       mountPath: /etc/kubernetes
     command:
@@ -229,7 +229,7 @@ spec:
     - --bind-address={{.yurthubBindingAddr}}
     - --server-addr={{.kubernetesServerAddr}}
     - --node-name=$(NODE_NAME)
-    - --bootstrap-file=/data/yurthub/bootstrap-hub.conf
+    - --bootstrap-file=/var/lib/yurthub/bootstrap-hub.conf
     - --working-mode={{.workingMode}}
     - --namespace={{.namespace}}
       {{if .enableDummyIf }}
