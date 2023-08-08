@@ -17,11 +17,10 @@ limitations under the License.
 package constants
 
 const (
-	Hostname            = "/etc/hostname"
-	SysctlK8sConfig     = "/etc/sysctl.d/k8s.conf"
-	StaticPodPath       = "/etc/kubernetes/manifests"
-	KubeletConfigureDir = "/etc/kubernetes"
-	// KubeletWorkdir                = "/var/lib/kubelet"
+	Hostname                      = "/etc/hostname"
+	SysctlK8sConfig               = "/etc/sysctl.d/k8s.conf"
+	StaticPodPath                 = "/etc/kubernetes/manifests"
+	KubeletConfigureDir           = "/etc/kubernetes"
 	KubeletWorkdir                = "/data/kubelet"
 	YurtHubWorkdir                = "/data/yurthub"
 	YurtHubBootstrapConfig        = "/data/yurthub/bootstrap-hub.conf"
