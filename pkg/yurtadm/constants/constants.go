@@ -21,12 +21,12 @@ const (
 	SysctlK8sConfig               = "/etc/sysctl.d/k8s.conf"
 	StaticPodPath                 = "/etc/kubernetes/manifests"
 	KubeletConfigureDir           = "/etc/kubernetes"
-	KubeletWorkdir                = "/var/lib/kubelet"
-	YurtHubWorkdir                = "/var/lib/yurthub"
-	YurtHubBootstrapConfig        = "/var/lib/yurthub/bootstrap-hub.conf"
-	OpenyurtDir                   = "/var/lib/openyurt"
-	YurttunnelAgentWorkdir        = "/var/lib/yurttunnel-agent"
-	YurttunnelServerWorkdir       = "/var/lib/yurttunnel-server"
+	KubeletWorkdir                = "/data/kubelet"
+	YurtHubWorkdir                = "/data/yurthub"
+	YurtHubBootstrapConfig        = "/data/urthub/bootstrap-hub.conf"
+	OpenyurtDir                   = "/data/openyurt"
+	YurttunnelAgentWorkdir        = "/data/yurttunnel-agent"
+	YurttunnelServerWorkdir       = "/data/yurttunnel-server"
 	KubeCniDir                    = "/opt/cni/bin"
 	KubeCniVersion                = "v0.8.0"
 	KubeletServiceFilepath        = "/etc/systemd/system/kubelet.service"
@@ -133,7 +133,7 @@ WantedBy=multi-user.target`
 	KubeletUnitConfig = `
 [Service]
 Environment="KUBELET_KUBECONFIG_ARGS=--kubeconfig=/etc/kubernetes/kubelet.conf"
-Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml"
+Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml" --root-dir=/data/kubelet"
 EnvironmentFile=-/var/lib/kubelet/kubeadm-flags.env
 EnvironmentFile=-/etc/default/kubelet
 ExecStart=
@@ -200,7 +200,7 @@ spec:
   volumes:
   - name: hub-dir
     hostPath:
-      path: /var/lib/yurthub
+      path: /data/yurthub
       type: DirectoryOrCreate
   - name: kubernetes
     hostPath:
